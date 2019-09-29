@@ -1,0 +1,398 @@
+{
+	"info": {
+		"_postman_id": "59f9f588-b2a9-4e41-bfd3-0ca241a40c83",
+		"name": "人力资源管理系统登录功能",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST请求——登录成功",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d86e152d-7c01-4daf-82eb-d0b6168c3a83",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"操作成功\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mobile\":\"13800000002\", \r\n\"password\":\"123456\"}"
+				},
+				"url": {
+					"raw": "http://182.92.81.159/api/sys/login",
+					"protocol": "http",
+					"host": [
+						"182",
+						"92",
+						"81",
+						"159"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST请求-用户名为10位",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d178f735-1948-4cbe-a52a-4e3d7d91f0cd",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"用户名或密码错误\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mobile\":\"1879253437\",\r\n\"password\":\"123456\"}"
+				},
+				"url": {
+					"raw": "http://182.92.81.159/api/sys/login",
+					"protocol": "http",
+					"host": [
+						"182",
+						"92",
+						"81",
+						"159"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST请求-用户名为12位",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d178f735-1948-4cbe-a52a-4e3d7d91f0cd",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"用户名或密码错误\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mobile\":\"138000000022\", \r\n\"password\":\"123456\"}"
+				},
+				"url": {
+					"raw": "http://182.92.81.159/api/sys/login",
+					"protocol": "http",
+					"host": [
+						"182",
+						"92",
+						"81",
+						"159"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST请求-用户名带有英文",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d178f735-1948-4cbe-a52a-4e3d7d91f0cd",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"用户名或密码错误\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mobile\":\"138000000ab\", \r\n\"password\":\"123456\"}"
+				},
+				"url": {
+					"raw": "http://182.92.81.159/api/sys/login",
+					"protocol": "http",
+					"host": [
+						"182",
+						"92",
+						"81",
+						"159"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST请求-密码错误",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c5c582aa-bf0c-4ac3-891e-82f1d561499a",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"密码错误\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mobile\":\"13800000002\",\r\n\"password\":\"1234\"}"
+				},
+				"url": {
+					"raw": "http://182.92.81.159/api/sys/login",
+					"protocol": "http",
+					"host": [
+						"182",
+						"92",
+						"81",
+						"159"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST请求-密码为空",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "da0d6034-10ce-4b38-b01a-e6d1237ac09f",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"密码错误\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mobile\":\"13800000002\",\r\n\"password\":\"\"}"
+				},
+				"url": {
+					"raw": "http://182.92.81.159/api/sys/login",
+					"protocol": "http",
+					"host": [
+						"182",
+						"92",
+						"81",
+						"159"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST请求-用户名为空",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0895fbfe-bea8-4721-b1a3-9300ff434885",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"用户名或密码错误\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mobile\":\"\",\r\n\"password\":\"123456\"}"
+				},
+				"url": {
+					"raw": "http://182.92.81.159/api/sys/login",
+					"protocol": "http",
+					"host": [
+						"182",
+						"92",
+						"81",
+						"159"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST请求-密码用户名为空",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b3a78444-ef97-418f-a716-4e69687f9092",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"系统繁忙\");",
+							"});",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://182.92.81.159/api/sys/login",
+					"protocol": "http",
+					"host": [
+						"182",
+						"92",
+						"81",
+						"159"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
